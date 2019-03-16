@@ -3,8 +3,8 @@ const path = require("path");
 const helmet = require("helmet");
 const { ApolloServer } = require('apollo-server-express');
 const { importSchema } = require("graphql-import");
-const resolvers = require("./resolvers/Candidate/candidate-resolver.js");
-const typeDefs = importSchema(path.join(path.resolve("./"), "/server/schema/Candidate/schema.graphql"));
+const resolvers = require("./resolvers/index.js");
+const typeDefs = importSchema(path.join(path.resolve("./"), "/server/schema/index.graphql"));
 
 const server = new ApolloServer({ typeDefs, resolvers, playground: false });
 const app = express();
