@@ -1,0 +1,2 @@
+# import * from "./Candidate/schema.graphql"
+# import * from "./UserApi/schema.graphql"

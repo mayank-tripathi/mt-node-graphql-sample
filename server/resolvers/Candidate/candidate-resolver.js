@@ -1,17 +1,11 @@
 async function getCandidates(root) {
 
     const { executeQuery } = require("../../helpers/dbHelper");
-    const result = await executeQuery("select id, name, email from candidate");
+    const result = await executeQuery("select top 10 id, created_date, email from dbo.candidate (nolock)");
     
     return result;
 }
 
-function getResolvers() {
-    return {
-        Query: {
-            allCandidates: getCandidates
-        }
-    };
-}
-
-module.exports = getResolvers();
+module.exports = {
+    allCandidates: getCandidates
+};

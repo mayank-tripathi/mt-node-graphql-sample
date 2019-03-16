@@ -1,0 +1,14 @@
+type Name{
+    first: String!
+    last: String!
+}
+type User {
+    id: String!
+    name: Name!
+    company: String!
+    email: String
+}
+
+type Query {
+    allUsers: [User]
+}
