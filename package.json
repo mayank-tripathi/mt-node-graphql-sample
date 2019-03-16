@@ -1,0 +1,39 @@
+{
+  "name": "mt-node-graphql",
+  "version": "1.0.0",
+  "description": "A sample project demontrating graphql in node environment. Graphql layer added ober a database and an external api.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "graphql",
+    "nodejs"
+  ],
+  "author": {
+    "name": "Mayank Tripathi",
+    "email": "mayank.tripathi786@live.com",
+    "url": "https://github.com/mayank-tripathi"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^2.4.8",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "graphql": "^14.1.1",
+    "graphql-import": "^0.7.1",
+    "graphql-tools": "^4.0.4",
+    "helmet": "^3.16.0",
+    "mssql": "^5.0.3"
+  },
+  "contributors": [{
+    "name": "Mayank Tripathi",
+    "email": "mayank.tripathi786@live.com",
+    "url": "https://github.com/mayank-tripathi"
+  },
+  {
+    "name": "Himanshu Sahu",
+    "email": "himanshusahu@outlook.com",
+    "url": "https://github.com/himanshusahu"
+  }]
+}

@@ -1,0 +1,6 @@
+type Score {
+    scaleTag: String!
+    raw: Int!
+    percentile: Int!
+    sten: Int!
+}

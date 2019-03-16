@@ -1,0 +1,9 @@
+type Candidate {
+    id: ID!
+    name: String!
+    email: String!
+}
+
+type Query {
+    allCandidates: [Candidate]
+}
