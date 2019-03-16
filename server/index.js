@@ -6,7 +6,7 @@ const { importSchema } = require("graphql-import");
 const resolvers = require("./resolvers/index.js");
 const typeDefs = importSchema(path.join(path.resolve("./"), "/server/schema/index.graphql"));
 
-const server = new ApolloServer({ typeDefs, resolvers, playground: false });
+const server = new ApolloServer({ typeDefs, resolvers, playground: true });
 const app = express();
 
 app.use(helmet());
