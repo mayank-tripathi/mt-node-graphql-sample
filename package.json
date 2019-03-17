@@ -4,12 +4,17 @@
   "description": "A sample project demontrating graphql in node environment. Graphql layer added ober a database and an external api.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./server/index.js"
+    "graphql": "node ./server/index.js",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "keywords": [
     "graphql",
-    "nodejs"
+    "nodejs",
+    "ms sql",
+    "react"
   ],
   "author": {
     "name": "Mayank Tripathi",
@@ -21,12 +26,16 @@
     "apollo-server-express": "^2.4.8",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
     "express": "^4.16.4",
     "graphql": "^14.1.1",
     "graphql-import": "^0.7.1",
     "graphql-tools": "^4.0.4",
     "helmet": "^3.16.0",
-    "mssql": "^5.0.3"
+    "mssql": "^5.0.3",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-scripts": "^2.1.8"
   },
   "contributors": [
     {
@@ -39,5 +48,11 @@
       "email": "himanshusahu@outlook.com",
       "url": "https://github.com/himanshusahu"
     }
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
   ]
 }
