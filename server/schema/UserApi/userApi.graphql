@@ -11,4 +11,5 @@ type User {
 
 type Query {
     allUsers: [User]
+    UserByEmail(email: String!) : [User]
 }

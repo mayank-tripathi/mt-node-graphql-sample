@@ -7,14 +7,35 @@ class UserComponent extends Component {
         super();
 
         this.state = {
-            allUsers: []
+            users: null,
+            email:""
         };
     }
 
     async getUsers(){
         
         const query = `{
-          allUsers {
+          users:allUsers {
+            id,
+            company,
+            email
+          }
+        }`;
+    
+        const users = await sendCall("POST", "http://localhost:4000/graphql", {query});
+        
+        if(users && typeof users.data === "object"){
+            this.setState(users.data);
+        } else {
+            console.log("Cound not fetch Users.");
+        }
+        
+    
+    }
+
+    async UsersByEmail(email){      
+        const query = `{
+            users:UserByEmail(email : "${email}") {
             id,
             company,
             email
@@ -33,14 +54,19 @@ class UserComponent extends Component {
     }
 
     getRows(){
-        if(Array.isArray(this.state.allUsers) && this.state.allUsers.length){
-            return this.state.allUsers.map((val, i) => <tr key={i}>
-            <th scope="row">{val.id}</th>
-            <td>{val.company}</td>
-            <td>{val.email}</td>
-        </tr>)
+        if(Array.isArray(this.state.users)){
+            if(this.state.users.length) {
+                return this.state.users.map((val, i) => <tr key={i}>
+                    <th scope="row">{val.id}</th>
+                    <td>{val.company}</td>
+                    <td>{val.email}</td>
+                </tr>);
+            } else {
+                return <tr><td colSpan="3">No data available!</td></tr>;
+            }
+            
         } else {
-            return <tr><td colSpan="3">Loading data. Please wait...</td></tr>;
+           return <tr><td colSpan="3">Loading data. Please wait...</td></tr>;
         }
         
     }
@@ -49,10 +75,29 @@ class UserComponent extends Component {
         this.getUsers();
     }
 
+    setEmail = (args) =>{
+        this.setState({email: args.currentTarget.value})
+    }
+    getUserData = () =>{
+        this.setState({users : null});
+        if(this.state.email.trim() === ""){
+            this.getUsers();
+        }else{
+            this.UsersByEmail(this.state.email);
+        }
+       
+    }
+
     render() {
         return (
         <>
-            <h4 className="text-center">User Component - External API</h4>
+            <h4 className="text-center">User Component - External API</h4>   
+            <div className="input-group">
+                <input className="form-control" onChange={this.setEmail}></input>
+                <div className="input-group-append">
+                    <button className="btn btn-outline-secondary" onClick={this.getUserData} type="button">Search by email</button>
+                </div>
+            </div>
             <table className="table table-dark mt-4">
                 <thead>
                     <tr>
@@ -63,7 +108,7 @@ class UserComponent extends Component {
                 </thead>
                 <tbody>
                     {
-                        this.state.allUsers && this.getRows()
+                        this.getRows()
                     }
                 </tbody>
             </table>

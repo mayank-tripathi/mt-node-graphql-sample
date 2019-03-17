@@ -28,11 +28,13 @@ async function executeQuery(query, iParams) {
         return result.recordset;
     } catch (err) {
         console.log("Error occured in Query Executor:", err);
+        sql.close();
     }
 }
  
 sql.on('error', err => {
     console.log("Error in Database Helper:", err);
+    sql.close();
 });
 
 module.exports = {inputParams, executeQuery};

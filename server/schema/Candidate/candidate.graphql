@@ -6,4 +6,5 @@ type Candidate {
 
 type Query {
     allCandidates: [Candidate]
+    getCandidatesByEmail(email : String!): [Candidate]
 }
